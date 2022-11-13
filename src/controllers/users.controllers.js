@@ -19,4 +19,14 @@ const getUsersbyId = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getUsersbyId };
+const getUserWithCourses = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await usersServices.getUserJoinCourse(id);
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { getAllUsers, getUsersbyId, getUserWithCourses };
