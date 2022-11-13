@@ -1,8 +1,10 @@
 const db = require("../src/utils/database");
 const express = require("express");
+const initModels = require("./models/initModels");
 
 // Initializations / Instances
 const app = express();
+initModels();
 
 // Settings / PORT
 const PORT = 8000;
