@@ -11,10 +11,12 @@ const Users = db.define("users", {
   firstName: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: "first_name",
   },
   lastName: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: "last_name",
   },
   password: {
     type: DataTypes.STRING,
