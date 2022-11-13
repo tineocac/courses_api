@@ -1,6 +1,7 @@
 const db = require("../src/utils/database");
 const express = require("express");
 const initModels = require("./models/initModels");
+const usersRouter = require("./routes/users.routes");
 
 // Initializations / Instances
 const app = express();
@@ -14,14 +15,17 @@ db.authenticate()
   .then(() => console.log("Succesful aunthentication"))
   .catch((error) => console.log(error));
 
-db.sync({force: true})
+db.sync({ force: false })
   .then(() => console.log("Succesfull synchronization"))
   .catch((error) => console.log(error));
 
 // Requests / Responses
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "Succesful request" });
 });
+
+// Middlewares
+app.use("/api/v1", usersRouter);
 
 // Start server
 app.listen(PORT, console.log(`Server is running at port ${PORT}`));
