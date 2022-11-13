@@ -29,4 +29,14 @@ const getUserWithCourses = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getUsersbyId, getUserWithCourses };
+const createUsers = async (req, res) => {
+  try {
+    const newUser = req.body;
+    const result = await usersServices.create(newUser);
+    res.status(201).json({message: "User succesfully created"});
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { getAllUsers, getUsersbyId, getUserWithCourses, createUsers };

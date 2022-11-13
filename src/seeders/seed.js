@@ -19,12 +19,21 @@ const usersCourses = [
     userId: 1,
     courseId: 1,
   },
+  {
+    userId: 1,
+    courseId: 2,
+  },
 ];
 
 const courses = [
   {
     title: "CSS",
     description: "Learn basic CSS",
+    instructor: "Brenda Gonzalez",
+  },
+  {
+    title: "HTML",
+    description: "Learn basic HTML",
     instructor: "Brenda Gonzalez",
   },
 ];
@@ -34,6 +43,10 @@ const categories = [
     name: "programming",
     courseId: 1,
   },
+  {
+    name: "programming",
+    courseId: 2,
+  },
 ];
 
 const videos = [
@@ -41,6 +54,11 @@ const videos = [
     title: "Learn basic CSS",
     url: "https://platzi.com/cursos/css-grid/",
     courseId: 1,
+  },
+  {
+    title: "Learn basic HTML",
+    url: "https://platzi.com/cursos/css-grid/",
+    courseId: 2,
   },
 ];
 

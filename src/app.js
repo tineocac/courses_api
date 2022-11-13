@@ -5,6 +5,7 @@ const usersRouter = require("./routes/users.routes");
 
 // Initializations / Instances
 const app = express();
+app.use(express.json());
 initModels();
 
 // Settings / PORT
