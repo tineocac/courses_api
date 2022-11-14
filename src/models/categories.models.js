@@ -5,11 +5,12 @@ const Courses = require("./courses.models");
 const Categories = db.define(
   "categories",
   {
-    id: {
+    categoryId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false,
+      field: "category_id"
     },
     name: {
       type: DataTypes.STRING,
@@ -18,7 +19,7 @@ const Categories = db.define(
     courseId: {
       type: DataTypes.INTEGER,
       references: {
-        key: "id",
+        key: "courseId",
         model: Courses,
       },
       allowNull: false,

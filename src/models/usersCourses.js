@@ -16,7 +16,7 @@ const UsersCouses = db.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        key: "id",
+        key: "userId",
         model: Users,
       },
       field: "user_id",
@@ -25,7 +25,7 @@ const UsersCouses = db.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        key: "id",
+        key: "courseId",
         model: Courses,
       },
       field: "course_id",

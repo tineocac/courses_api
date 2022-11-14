@@ -1,12 +1,14 @@
 const db = require("../utils/database");
 const { DataTypes } = require("sequelize");
+const Categories = require("./categories.models");
 
 const Courses = db.define("courses", {
-  id: {
+  courseId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
+    field: "course_id",
   },
   title: {
     type: DataTypes.STRING,
@@ -19,6 +21,15 @@ const Courses = db.define("courses", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  categoryId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      key: "categoryId",
+      model: Categories,
+    },
+    field: "category_id",
+  },
 });
 
-module.exports = Courses
+module.exports = Courses;

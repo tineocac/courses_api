@@ -3,11 +3,12 @@ const { DataTypes } = require("sequelize");
 const Courses = require("./courses.models");
 
 const Videos = db.define("videos", {
-  id: {
+  videoId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
+    field: "video_id"
   },
   title: {
     type: DataTypes.STRING,
@@ -21,7 +22,7 @@ const Videos = db.define("videos", {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      key: "id",
+      key: "courseId",
       model: Courses,
     },
     field: "course_id",
