@@ -10,4 +10,14 @@ const createNewVideo = async (req, res) => {
   }
 };
 
-module.exports = createNewVideo;
+const deleteVideos = async (req, res) => {
+  try {
+    const { videoId } = req.params;
+    const result = await videosServices.delete(videoId);
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(errro);
+  }
+};
+
+module.exports = { createNewVideo, deleteVideos };

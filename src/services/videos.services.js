@@ -9,6 +9,17 @@ class videosServices {
       throw error;
     }
   }
+
+  static async delete(videoId) {
+    try {
+      const result = await Videos.destroy({
+        where: { videoId },
+      });
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = videosServices;
