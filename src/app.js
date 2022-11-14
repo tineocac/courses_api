@@ -4,6 +4,7 @@ const initModels = require("./models/initModels");
 const usersRouter = require("./routes/users.routes");
 const usersCoursesRouter = require("./routes/usersCourses.routes");
 const coursesRouter = require("./routes/courses.routes");
+const videosRouter = require("./routes/videos.routes");
 
 // Initializations / Instances
 const app = express();
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1", usersRouter);
 app.use("/api/v1", usersCoursesRouter);
 app.use("/api/v1", coursesRouter);
+app.use("/api/v1", videosRouter);
 
 // Start server
 app.listen(PORT, console.log(`Server is running at port ${PORT}`));
