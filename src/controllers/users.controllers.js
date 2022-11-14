@@ -39,4 +39,24 @@ const createUsers = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getUsersbyId, getUserWithCourses, createUsers };
+const updateUserData = async (req, res) => {
+  try {
+    const { firstName, lastName, password } = req.body;
+    const { userId } = req.params;
+    const result = await usersServices.update(
+      { firstName, lastName, password },
+      userId
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = {
+  getAllUsers,
+  getUsersbyId,
+  getUserWithCourses,
+  createUsers,
+  updateUserData,
+};

@@ -62,6 +62,18 @@ class usersServices {
       throw error;
     }
   }
+
+  static async update({ firstName, lastName, password }, userId) {
+    try {
+      const result = await Users.update(
+        { firstName, lastName, password },
+        { where: { userId } }
+      );
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = usersServices;
