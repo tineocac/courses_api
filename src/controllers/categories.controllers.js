@@ -10,4 +10,14 @@ const createCategory = async (req, res) => {
   }
 };
 
-module.exports = createCategory;
+const deleteCategories = async (req, res) => {
+  try {
+    const { categoryId } = req.params;
+    const result = await categoriesServices.delete(categoryId);
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { createCategory, deleteCategories };

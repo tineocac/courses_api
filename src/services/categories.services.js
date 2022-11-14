@@ -9,6 +9,15 @@ class categoriesServices {
       throw error;
     }
   }
+
+  static async delete(categoryId) {
+    try {
+      const result = await Categories.destroy({ where: { categoryId } });
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = categoriesServices;
