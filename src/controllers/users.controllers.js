@@ -42,7 +42,7 @@ const createUsers = async (req, res) => {
 const updateUserData = async (req, res) => {
   try {
     const { firstName, lastName, password } = req.body;
-    const data = {firstName, lastName, password};
+    const data = { firstName, lastName, password };
     const { userId } = req.params;
     const result = await usersServices.update(data, userId);
     res.status(200).json(result);
