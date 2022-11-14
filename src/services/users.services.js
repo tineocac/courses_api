@@ -63,12 +63,9 @@ class usersServices {
     }
   }
 
-  static async update({ firstName, lastName, password }, userId) {
+  static async update(data, userId) {
     try {
-      const result = await Users.update(
-        { firstName, lastName, password },
-        { where: { userId } }
-      );
+      const result = await Users.update(data, { where: { userId } });
       return result;
     } catch (error) {
       throw error;
