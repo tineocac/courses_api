@@ -1,3 +1,4 @@
+// const Courses = require("../models/courses.models");
 const Courses = require("../models/courses.models");
 const Users = require("../models/users.models");
 const UsersCourses = require("../models/usersCourses");
@@ -16,9 +17,9 @@ class usersServices {
     }
   }
 
-  static async getById(id) {
+  static async getById(userId) {
     try {
-      const result = await Users.findByPk(id, {
+      const result = await Users.findByPk(userId, {
         attributes: {
           exclude: ["createdAt", "updatedAt", "password"],
         },
@@ -29,26 +30,28 @@ class usersServices {
     }
   }
 
-  static async getUserJoinCourse(id) {
+  static async getUserJoinCourse(userId) {
     try {
       const result = await Users.findOne({
-        where: { id },
+        where: { userId },
         attributes: {
-          exclude: ["createdAt", "updatedAt", "password"],
+          exclude: ["password", "createdAt", "updatedAt"],
         },
         include: {
           model: UsersCourses,
-          attributes: ["courseId"],
+          attributes: ["userId", "courseId"],
           include: {
             model: Courses,
             attributes: {
-              exclude: ["createdAt", "updatedAt", "id"],
+              exclude: ["category_id", "createdAt", "updatedAt"],
             },
           },
         },
       });
       return result;
-    } catch (error) {}
+    } catch (error) {
+      throw error;
+    }
   }
 
   static async create(newUser) {
