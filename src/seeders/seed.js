@@ -1,9 +1,9 @@
 const db = require("../utils/database");
 const Users = require("../models/users.models");
-const Courses = require("../models/courses.models");
-const UsersCouses = require("../models/usersCourses");
 const Categories = require("../models/categories.models");
+const Courses = require("../models/courses.models");
 const Videos = require("../models/videos.models");
+const UsersCourses = require("../models/usersCourses");
 
 const users = [
   {
@@ -14,14 +14,12 @@ const users = [
   },
 ];
 
-const usersCourses = [
+const categories = [
   {
-    userId: 1,
-    courseId: 1,
+    name: "Programming",
   },
   {
-    userId: 1,
-    courseId: 2,
+    name: "Graphic Design",
   },
 ];
 
@@ -30,22 +28,13 @@ const courses = [
     title: "CSS",
     description: "Learn basic CSS",
     instructor: "Brenda Gonzalez",
+    categoryId: 1,
   },
   {
     title: "HTML",
     description: "Learn basic HTML",
     instructor: "Brenda Gonzalez",
-  },
-];
-
-const categories = [
-  {
-    name: "programming",
-    courseId: 1,
-  },
-  {
-    name: "programming",
-    courseId: 2,
+    categoryId: 1,
   },
 ];
 
@@ -62,29 +51,34 @@ const videos = [
   },
 ];
 
-db.sync()
-  .then(() => {
-    users.forEach((user) => Users.create(user));
-    console.log("Seeder user succesfully created");
-  })
-  .catch((error) => console.log(error))
-  .then(() => {
-    courses.forEach((course) => Courses.create(course));
-    console.log("Seeder course succesfully created");
-  })
-  .catch((error) => console.log(error))
-  .then(() => {
-    usersCourses.forEach((pivote) => UsersCouses.create(pivote));
-    console.log("Seeder pivote table succesfully created");
-  })
-  .catch((error) => console.log(error))
-  .then(() => {
+const usersCourses = [
+  {
+    userId: 1,
+    courseId: 1,
+  },
+  {
+    userId: 1,
+    courseId: 2,
+  },
+];
+
+db.sync().then(() => {
+  users.forEach((user) => Users.create(user));
+  console.log("Seeder user succesfully created");
+  setTimeout(() => {
     categories.forEach((category) => Categories.create(category));
     console.log("Seeder category succesfully created");
-  })
-  .catch((error) => console.log(error))
-  .then(() => {
+  }, 100);
+  setTimeout(() => {
+    courses.forEach((course) => Courses.create(course));
+    console.log("Seeder course succesfully created");
+  }, 200);
+  setTimeout(() => {
     videos.forEach((video) => Videos.create(video));
     console.log("Seeder video succesfully created");
-  })
-  .catch((error) => console.log(error));
+  }, 300);
+  setTimeout(() => {
+    usersCourses.forEach((pivote) => UsersCourses.create(pivote));
+    console.log("Seeder pivote table succesfully created");
+  }, 400);
+});

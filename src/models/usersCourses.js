@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 const Users = require("./users.models");
 const Courses = require("./courses.models");
 
-const UsersCouses = db.define(
+const UsersCourses = db.define(
   "users_courses",
   {
     id: {
@@ -36,4 +36,4 @@ const UsersCouses = db.define(
   }
 );
 
-module.exports = UsersCouses;
+module.exports = UsersCourses;
