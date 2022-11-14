@@ -18,4 +18,14 @@ const getCoursesWithInfo = async (req, res) => {
   }
 };
 
-module.exports = { getAllCourses, getCoursesWithInfo };
+const createNewCourse = async (req, res) => {
+  try {
+    const newCourse = req.body;
+    const result = await coursesServices.create(newCourse);
+    res.status(201).json(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { getAllCourses, getCoursesWithInfo, createNewCourse };
