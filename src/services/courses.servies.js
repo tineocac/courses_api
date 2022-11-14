@@ -41,6 +41,20 @@ class coursesServices {
       throw error;
     }
   }
+
+  static async update(courseId, description) {
+    try {
+      const result = await Courses.update(
+        { description },
+        {
+          where: { courseId },
+        }
+      );
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = coursesServices;
